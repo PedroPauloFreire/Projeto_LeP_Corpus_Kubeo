@@ -1,8 +1,8 @@
-# Kubeo Corpus Annotator: Ferramenta de Anotação e Visualização Linguística
+# Kubeo Corpus Annotator: Ferramenta de anotação e visualização linguística na língua Kubeo
 
 ---
 
-Este projeto foi desenvolvido como trabalho final para a disciplina de **Língua e Programação** (Letras - Linguística) no **semestre de 2025.2** da **Universidade de Brasília (UnB)**.
+Este projeto foi desenvolvido como trabalho final para a disciplina de **Língua e Programação** no **semestre de 2025.2** da **Universidade de Brasília (UnB)**.
 
 O trabalho foi orientado pelo **Professor Dr. CLAUDIO CORREA E CASTRO GONCALVES**.
 
