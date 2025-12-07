@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        /* Um pouco de CSS para visualização das palavras */
+        .token { padding: 0 2px; }
+        .token:hover { background-color: #e0e0e0; cursor: default; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 10px; border-bottom: 1px solid #ccc; padding: 5px; }
+        a.sentence-link { text-decoration: none; color: inherit; display: block; }
+        a.sentence-link:hover { background-color: #f9f9f9; }
+        .sid { font-weight: bold; color: #555; margin-right: 10px; font-size: 0.8em;}
+    </style>
+</head>
+<body>
+
+<h2>Frases Kubeo (Corpus)</h2>
+
+<ul>
+{% for sid, html in sentences %}
+    <li>
+        <a href="/sentence/{{sid}}" class="sentence-link">
+            {{ html|safe }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<hr>
+<a href="/search">Busca de palavras</a>
+
+</body>
+</html>

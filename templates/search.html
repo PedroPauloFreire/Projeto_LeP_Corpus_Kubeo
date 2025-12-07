@@ -1,0 +1,12 @@
+<!doctype html>
+<html><body>
+<form method="get">
+<input name="q" value="{{q}}">
+<button>Buscar</button>
+</form>
+<ul>
+{% for r in results %}
+<li><a href="/sentence/{{r.sid}}">Frase {{r.sid}}</a></li>
+{% endfor %}
+</ul>
+</body></html>

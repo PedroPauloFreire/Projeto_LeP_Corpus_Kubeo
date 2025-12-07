@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Detalhes da Palavra</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .data-table th, .data-table td { text-align: left; padding: 12px; border-bottom: 1px solid #eee; }
+        .data-table th { background-color: #f9f9f9; width: 30%; color: #555; }
+        .back-link { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #007bff; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    {% if word.sentence_id %}
+    <a href="/sentence/{{ word.sentence_id }}" class="back-link">← Voltar para a Frase</a>
+    {% else %}
+    <a href="/" class="back-link">← Voltar para o Início</a>
+    {% endif %}
+
+    <h1>{{ word.form }}</h1>
+
+    <table class="data-table">
+        <tr>
+            <th>Lema (Raiz)</th>
+            <td>{{ word.lemma or '-' }}</td>
+        </tr>
+        <tr>
+            <th>Tradução/Glosa</th>
+            <td>{{ word.gloss_pt or '-' }}</td>
+        </tr>
+        <tr>
+            <th>Classe Gramatical (POS)</th>
+            <td>{{ word.pos or '-' }}</td>
+        </tr>
+        {% for key, value in word.propriedades.items() %}
+            {% if value %}
+            <tr>
+                <th>{{ key|capitalize }}</th>
+                <td>
+                    {% if key == 'contável' %}
+                        {% if value == 'TRUE' %}
+                            Sim
+                        {% else %}
+                            Não
+                        {% endif %}
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+</body>
+</html>

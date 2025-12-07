@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Visualização da Frase {{ sid }}</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        background-color: #fcfcfc;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 30px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: 500;
+    }
+
+    .sentence-container {
+        display: flex;
+        flex-wrap: wrap; /* Quebra linha se a frase for longa */
+        gap: 12px;       /* Espaço entre as palavras */
+        align-items: flex-start;
+    }
+
+    /* Bloco de cada palavra */
+    .word-unit {
+        display: flex;
+        flex-direction: column; /* Dados empilhados verticalmente */
+        align-items: center;    
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 6px;
+        transition: background-color 0.2s;
+    }
+
+    .word-unit:hover {
+        background-color: #e8f0fe;
+    }
+
+    /* Estilos das camadas de texto */
+    .layer-form {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #222;
+        margin-bottom: 2px;
+    }
+
+    .layer-pos {
+        font-size: 0.75em;
+        color: #666;
+        text-transform: uppercase;
+        font-weight: 600;
+        background-color: #eee;
+        padding: 1px 4px;
+        border-radius: 3px;
+        margin-bottom: 2px;
+    }
+
+    .layer-gloss {
+        font-size: 1em;
+        color: #0066cc; /* Tradução em azul */
+        font-style: italic;
+    }
+
+    /* Quando não houver dados */
+    .empty-data { opacity: 0.3; font-size: 0.7em; }
+
+</style>
+</head>
+<body>
+
+<a href="/" class="back-link">← Voltar para a lista de frases</a>
+
+<div class="sentence-container">
+    {% for word in sentence.words %}
+    
+    <div class="word-unit" data-word-id="{{ word.id }}">
+        
+        <span class="layer-form">{{ word.form }}</span>
+        
+        <span class="layer-pos">
+            {{ word.pos if word.pos else '<span class="empty-data">?</span>'|safe }}
+        </span>
+
+        <span class="layer-gloss">
+            {{ word.gloss_pt if word.gloss_pt else '<span class="empty-data">-</span>'|safe }}
+        </span>
+        
+    </div>
+
+    {% endfor %}
+</div>
+
+<script>
+document.addEventListener('click', e => {
+    // Procura o elemento pai .word-unit
+    const t = e.target.closest('.word-unit'); 
+    
+    if (!t) return;
+    
+    const wordId = t.dataset.wordId;
+    // Redireciona para a página da palavra
+    window.location.href = '/word/' + wordId;
+});
+</script>
+
+</body>
+</html>
