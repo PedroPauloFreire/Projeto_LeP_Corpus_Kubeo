@@ -15,10 +15,10 @@ O **Kubeo Corpus Annotator** é uma aplicação web simples, construída em **Py
 ### Principais Funcionalidades
 
 * **Visualização Interlinear:** Exibição das frases Kubeo com glosa (tradução) e POS (Classe Gramatical) alinhados verticalmente (estilo interlinear).
-* **Busca em Tempo Real:** Mecanismo de busca por forma e lema, realizado diretamente na página inicial.
+* **Busca em Tempo Real:** Mecanismo de busca por forma e lema e glosa(tradução), realizado diretamente na página inicial.
 * **Anotação Dinâmica (CRUD):**
     * **Criação (Adicionar):** Interface dinâmica que altera os campos de anotação (Modo, Tempo, Aspecto, Gênero, Contável) com base na Classe Gramatical (Verbo vs. Nome) selecionada.
-    * **Persistência de Dados:** Novo conteúdo é salvo diretamente no arquivo TSV do corpus.
+    * **Persistência de Dados:** O novo conteúdo é salvo diretamente no arquivo TSV do corpus.
 * **Estrutura de Dados:** Utiliza **Dataclasses** em Python para modelar o corpus, frases e palavras, garantindo tipagem e robustez.
 
 ### Fonte dos Dados
