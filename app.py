@@ -2,12 +2,11 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 from load_corpus import load_from_tsv
 from models import Sentence, Word
 import csv
-import uuid
 import os
 
-
+CORPUS_PATH = "data/kubeo_corpus.tsv"
 app = Flask(__name__)
-corpus = load_from_tsv("data/kubeo_corpus.tsv")
+corpus = load_from_tsv(CORPUS_PATH )
 
 #página raiz
 @app.route("/")
@@ -172,7 +171,7 @@ def add_sentence():
             corpus.add_sentence(new_sentence)
 
             #Persistir dados no TSV
-            file_path = "data/kubeo_corpus.tsv"
+            file_path = CORPUS_PATH 
             file_exists = os.path.isfile(file_path)
             
             fieldnames = ['id', 'sentence_id', 'word_index', 'kubeo_form', 'lemma',

@@ -2,6 +2,33 @@
 <html>
 <head>
     <style>
+        body { 
+            font-family: sans-serif; 
+            padding: 20px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+       
+        .header-container {
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 20px;
+        }
+        .header-logo {
+            width: 40px; /* Tamanho da imagem da logo UnB */
+            height: auto;
+            margin-right: 15px; /* Espaçamento entre a imagem e o título */
+        }
+        .header-subtitle {
+            font-size: 0.9em; 
+            color: #666;
+            margin: 0;
+            padding-top: 2px;
+        }
+        h2 {
+            margin: 0;
+        }
+        /* Estilos de lista e busca... */
         .token { padding: 0 2px; }
         .token:hover { background-color: #e0e0e0; cursor: default; }
         ul { list-style-type: none; padding: 0; }
@@ -13,7 +40,17 @@
 </head>
 <body>
 
-<h2>Corpus de Frases Anotadas Kubeo</h2>
+<div class="header-container">
+    <img src="{{ url_for('static', filename='logo_unb_oficial_2025.png') }}" alt="Logo da UnB" class="header-logo">
+    
+    <div>
+        <h2>Frases Kubeo (Corpus)</h2>
+        <p class="header-subtitle">
+            Projeto Final de Língua e Programação (2025.2) | Prof. Dr. Cláudio Correa | UnB<br>
+            Aluno: Pedro Paulo Freire
+        </p>
+    </div>
+</div>
 
 <div style="display: flex; flex-direction: column; gap: 15px; align-items: flex-start; margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
 
@@ -22,7 +59,7 @@
     </a>
 
     <form action="/search" method="get" style="display: flex; gap: 5px; align-items: center;">
-        <input type="text" name="q" placeholder="Buscar palavra..." required
+        <input type="text" name="q" placeholder="Digite a palavra aqui" required
                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
         
         <button type="submit" 
