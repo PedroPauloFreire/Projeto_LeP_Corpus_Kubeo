@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Adicionar Nova Frase</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .container { max-width: 1100px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        
+        /* Estilo da Linha de Palavra */
+        .word-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            animation: fadeIn 0.3s;
+        }
+
+        /* Estilo dos Inputs */
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-size: 0.75em; color: #666; margin-bottom: 2px; font-weight: bold; }
+        input, select { padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* Tamanhos específicos para os campos */
+        .w-form { flex: 2; font-weight: bold; }
+        .w-lemma { flex: 1.5; }
+        .w-pos { flex: 0.8; }
+        .w-small { flex: 0.8; }
+        .w-gloss { flex: 2; }
+
+        /* Botões */
+        .btn-area { margin-top: 20px; display: flex; gap: 10px; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; }
+        .btn-add { background-color: #0a87ee; color: white; }
+        .btn-save { background-color: #04a01e; color: white; }
+        .btn-remove { background-color: #dc3545; color: white; padding: 5px 10px; font-size: 0.8em; margin-top: 15px;}
+        button:hover { opacity: 0.9; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="/">← Voltar para Início</a>
+    <h2>Adicionar Nova Frase</h2>
+    
+    <form action="/add" method="POST">
+        
+        <div id="words-container">
+            </div>
+
+        <div class="btn-area">
+            <button type="button" class="btn-add" onclick="addWordRow()">+ Adicionar Palavra</button>
+            <button type="submit" class="btn-save">Salvar Frase</button>
+        </div>
+    </form>
+</div>
+
+<template id="word-template">
+    <div class="word-row">
+        <div class="input-group w-form">
+            <label>Palavra (Kubeo)</label>
+            <input type="text" name="kubeo_form[]" required placeholder="Ex: wekɨ">
+        </div>
+        <div class="input-group w-lemma">
+            <label>Lema/Raiz</label>
+            <input type="text" name="lemma[]" placeholder="Raiz">
+        </div>
+        <div class="input-group w-gloss">
+            <label>Tradução/Glosa (PTBR)</label>
+            <input type="text" name="glosa_ptbr[]" placeholder="Tradução PTBR/Glosa">
+        </div>        
+        <div class="input-group w-pos">
+            <label>POS</label>
+            <select name="pos[]" onchange="toggleProps(this)">
+                <option value="N">Nome</option>
+                <option value="V">Verbo</option>
+                <option value="ADJ">Adj</option>
+                <option value="ADV">Adv</option>
+                <option value="PRO">Pron</option>
+                <option value="PART">Part</option>
+                <option value="OUTRO">Outro</option>
+            </select>
+        </div>      
+        <div class="props-panel noun-group" id="panel-noun">
+            <div class="input-group w-small">
+                <label>Gênero</label>
+                <select name="gender[]">
+                    <option value="">-</option>
+                    <option value="MSC">MASC</option>
+                    <option value="FEM">FEM</option>
+                    <option value="IND">IND</option>
+                </select>
+            </div>
+            <div class="input-group w-small">
+                <label>Num (N)</label>
+                <select name="number[]">
+                    <option value="">-</option>
+                    <option value="SG">SG</option>
+                    <option value="PL">PL</option>
+                </select>
+            </div>
+            <div class="input-group w-small">
+                <label>Contável</label>
+                <select name="countable[]">
+                    <option value="">-</option>
+                    <option value="TRUE">Sim</option>
+                    <option value="FALSE">Não</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="props-panel verb-group" id="panel-verb" style="display: none;">
+            
+            <div class="input-group w-verb">
+                <label>Modo</label>
+                <select name="mood[]">
+                    <option value="">-</option>
+                    <option value="Decl">Declarativo</option>
+                    <option value="Interr">Interrogativo</option>
+                    <option value="Imp">Imperativo</option>
+                    <option value="Exhort">Exortativo</option>
+                    <option value="Irreal">Irrealis</option>
+                </select>
+            </div>
+
+            <div class="input-group w-verb">
+                <label>Tempo</label>
+                <select name="tense[]">
+                    <option value="">-</option>
+                    <option value="Pres">Presente</option>
+                    <option value="PastRec">Passado Rec. (Visual)</option>
+                    <option value="PastRem">Passado Rem. (Hist)</option>
+                    <option value="Fut">Futuro</option>
+                    <option value="Atemp">Atemporal</option>
+                </select>
+            </div>
+
+            <div class="input-group w-verb">
+                <label>Aspecto</label>
+                <select name="aspect[]">
+                    <option value="">-</option>
+                    <option value="Perf">Perfectivo</option>
+                    <option value="Imperf">Imperfectivo</option>
+                    <option value="Hab">Habitual</option>
+                    <option value="Prog">Progressivo</option>
+                    <option value="Stat">Estativo</option>
+                    <option value="Dyn">Dinâmico</option>
+                </select>
+            </div>
+
+            <div class="input-group w-small">
+                <label>Pessoa</label>
+                <select name="person[]">
+                    <option value="">-</option>
+                    <option value="1">1ª</option>
+                    <option value="2">2ª</option>
+                    <option value="3">3ª</option>
+                    <option value="imp">Impess.</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
+    </div>
+</template>
+
+<script>
+    //Função para adicionar nova linha
+    function addWordRow() {
+        const container = document.getElementById('words-container');
+        const template = document.getElementById('word-template');
+        
+        //Clona o conteúdo do template
+        const clone = template.content.cloneNode(true);
+        
+        //Adiciona ao container
+        container.appendChild(clone);
+    }
+
+    //Função para remover uma linha
+    function removeRow(btn) {
+        const row = btn.closest('.word-row');
+        row.remove();
+    }
+
+    function toggleProps(selectElement) {
+        const row = selectElement.closest('.word-row');
+        const nounPanel = row.querySelector('#panel-noun');
+        const verbPanel = row.querySelector('#panel-verb');
+        
+        //Limpa campos ao trocar
+        const nounInputs = nounPanel.querySelectorAll('input, select');
+        const verbInputs = verbPanel.querySelectorAll('input, select');
+
+        if (selectElement.value === 'V') {
+            nounPanel.style.display = 'none';
+            verbPanel.style.display = 'flex';
+            nounInputs.forEach(el => el.value = "");
+        } else {
+            nounPanel.style.display = 'flex';
+            verbPanel.style.display = 'none';
+            verbInputs.forEach(el => el.value = "");
+        }
+    }
+
+    //Adiciona uma linha automaticamente ao carregar a página
+    window.onload = addWordRow;
+</script>
+
+</body>
+</html>

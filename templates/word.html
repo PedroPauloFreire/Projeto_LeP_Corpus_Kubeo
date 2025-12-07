@@ -1,4 +1,5 @@
-<!doctype html>
+<!docty
+e html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -16,9 +17,9 @@
 <body>
 
     {% if word.sentence_id %}
-    <a href="/sentence/{{ word.sentence_id }}" class="back-link">← Voltar para a Frase</a>
+    <a href="/sentence/{{ word.sentence_id }}" class="back-link">← Voltar para a frase</a>
     {% else %}
-    <a href="/" class="back-link">← Voltar para o Início</a>
+    <a href="/" class="back-link">← Voltar para o início</a>
     {% endif %}
 
     <h1>{{ word.form }}</h1>
@@ -30,7 +31,7 @@
         </tr>
         <tr>
             <th>Tradução/Glosa</th>
-            <td>{{ word.gloss_pt or '-' }}</td>
+            <td>{{ word.glosa_ptbr or '-' }}</td>
         </tr>
         <tr>
             <th>Classe Gramatical (POS)</th>

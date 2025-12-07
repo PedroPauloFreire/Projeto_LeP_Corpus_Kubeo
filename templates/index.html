@@ -2,7 +2,6 @@
 <html>
 <head>
     <style>
-        /* Um pouco de CSS para visualização das palavras */
         .token { padding: 0 2px; }
         .token:hover { background-color: #e0e0e0; cursor: default; }
         ul { list-style-type: none; padding: 0; }
@@ -14,8 +13,26 @@
 </head>
 <body>
 
-<h2>Frases Kubeo (Corpus)</h2>
+<h2>Corpus de Frases Anotadas Kubeo</h2>
 
+<div style="display: flex; flex-direction: column; gap: 15px; align-items: flex-start; margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
+
+    <a href="/add" style="background-color: #28a745; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+        + Adicionar nova frase
+    </a>
+
+    <form action="/search" method="get" style="display: flex; gap: 5px; align-items: center;">
+        <input type="text" name="q" placeholder="Buscar palavra..." required
+               style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+        
+        <button type="submit" 
+                style="background-color: #bb9003; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">
+            🔍 Buscar palavra
+        </button>
+    </form>
+
+</div>
+   
 <ul>
 {% for sid, html in sentences %}
     <li>
@@ -27,7 +44,7 @@
 </ul>
 
 <hr>
-<a href="/search">Busca de palavras</a>
+
 
 </body>
 </html>

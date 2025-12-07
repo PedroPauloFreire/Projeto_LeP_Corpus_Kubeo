@@ -1,0 +1,59 @@
+id	sentence_id	word_index	kubeo_form	lemma	pos	glosa_ptbr	gender	number	countable	mood	tense	aspect	person	notes
+1	s1	0	wekɨ	wekɨ	N	anta	MSC	SG	TRUE					Animal
+2	s1	1	eda-bi	eda	V	chegou	MSC	SG			Rec. Past		3	
+3	s2	0	hi	yɨ	PRO	meu			TRUE				1	
+4	s2	1	pakɨ	pakɨ	N	pai	MSC	SG	TRUE					Parentesco
+5	s2	2	eda-bi	eda	V	chegou	MSC	SG			Rec. Past		3	
+6	s3	0	maka-rõ-ĩ	maka	N	na mata	IN	SG	FALSE					Locativo
+7	s3	1	kɨ-ame	kɨ	V	vive	MSC	SG					3	
+8	s3	2	ɨ̃	ɨ̃	PRO	ele	MSC	SG	TRUE				3	Anáfora
+9	s3	3	yawi	yawi	N	onça	MSC	SG	TRUE					
+10	s3	4	hũa-kɨ	hũa	ADJ	vermelho	MSC	SG					Modificador
+11	s4	0	yɨ	yɨ	PRO	eu			TRUE				1	
+12	s4	1	pami-kɨ	pami	N	Kubeo	MSC	SG	TRUE					Etnônimo
+13	s5	0	yɨ	yɨ	PRO	eu			TRUE				1	
+14	s5	1	pami-kɨ=bu	pami	N	sou Kubeo	MSC	SG						Cópula
+15	s6	0	ã-ha-kɨ	ã	V	coma!	MSC	SG		Imp				Imperativo
+16	s6	1	a-há-kɨ	a	V	diga!	MSC	SG		Imp				Imperativo
+17	s7	0	õ	õ	PRO	ela	FEM	SG	TRUE				3	
+18	s7	1	pami-ko-ba?	pami	N	é Kubeo?	FEM	SG		Interr				Interrogativo
+19	s8	0	ãrĩ	ãrĩ	ADV	onde/cadê			FALSE					
+20	s8	1	mipakɨ	pakɨ	N	teu pai	MSC	SG	TRUE					Possessivo
+21	s8	2	kɨ-ri?	kɨ	V	está?			FALSE	Interr				
+22	s9	0	hi	yɨ	PRO	minha	FEM	SG	TRUE				1	
+23	s9	1	hɨtɨra-re	hɨtɨra	N	farinha	IN	SG	FALSE					Acusativo
+24	s9	2	õ-re	õ	PRO	para ela	FEM	SG	TRUE				3	Obliquo
+25	s9	3	dawahakɨ	da	V	leve	MSC	SG		Imp			2	Causativo
+26	s10	0	yɨ	yɨ	PRO	eu			TRUE				1	
+27	s10	1	habo-kɨ	habo	N	chefe	MSC	SG	TRUE					
+28	s10	2	oreha-i-mɨ-ma	oreha	V	chamado	MSC	SG					Passiva
+29	s10	3	te-wɨ	te	V	fui			FALSE		Rec. Past			Auxiliar
+30	s10	4	meme-kɨ	meme	V	trabalhar	MSC	SG		Nominal				Nominalização
+31	s10	5	rɨ̃-kɨyɨ	rɨ̃	V	ir			FALSE		Futuro			
+32	s11	0	yɨ-re	yɨ	PRO	eu (exp)			TRUE				1	So (Sujeito obj)
+33	s11	1	mɨama-i-wɨ	mɨama	V	tenho soluço	IN	SG			Stative		Involuntário
+34	s12	0	yãrãdawi	yãrãdawi	N	brancos	MSC	PL	TRUE					Não-indígenas
+35	s12	1	kɨrami	kɨrami	N	casa	IN	SG	TRUE					
+36	s12	2	kĩhĩ=yami=hĩ-e=tã-mu	kĩhĩ	ADJ	são casinhas	IN	PL						Foco/Cópula
+37	s13	0	Kuina	kuina	NUM	Um					
+38	s13	1	hãrãwu	hãrãwu	N	dia	IN	SG	TRUE				Tempo
+39	s13	2	meawa	mea	N	formigas	FEM	PL	TRUE				
+40	s13	3	mene	mene	PART	diminutivo?					
+41	s13	4	äre	ä	V	comer		PL		Decl	PastRem		3	
+42	s13	5	kura	kura	N	ingá	IN	SG	TRUE				Objeto
+43	s13	6	nuimada	nui	V	foram?					
+44	s13	7	ne	ne	PRO	elas (poss)	FEM	PL	TRUE				Possessivo
+45	s13	8	menewai	menewai	N	plantação	IN	SG	FALSE				Locativo
+46	s14	0	Ne	ne	PRO	Elas	FEM	PL	TRUE				3	Sujeito
+47	s14	1	meãro	meã	ADV	bem					
+48	s14	2	ãri	ãri	V	estar/fazer		PL		Decl	PastRem	Imperf	3	Auxiliar
+49	s14	3	parai	pa	V	comendo?		PL				Prog		
+50	s14	4	korika	korika	ADV	de repente					
+51	s14	5	mie	mie	N	tamanduá	MSC	SG	TRUE				Sujeito
+52	s14	6	dâmeða	dâ	V	veio	MSC	SG		Decl	PastRem	Perf	3	Reportativo
+53	s15	0	Aipe	aipe	ADV	Por que?					
+54	s15	1	teni	te	V	fazer/ser	MSC	SG		Interr	PastRem		3	Auxiliar
+55	s15	2	meawã	mea	N	formigas	FEM	PL	TRUE				
+56	s15	3	kûyakemarĩ?	kûya	V	fugiram?		PL		Interr	PastRem	Perf	3	
+57	s16	0	abuhu	abuhu	N	espíritos	MSC	PL	TRUE				Possuidor
+58	s16	1	kɨrami	kɨrami	N	casa	IN	SG	TRUE

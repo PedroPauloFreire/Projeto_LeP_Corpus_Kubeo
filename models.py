@@ -9,7 +9,6 @@ class Word:
     form: str #palavra em Kubeo como está no texto original
     lemma: Optional[str] #forma raiz da palavra, sem flexão
     pos: Optional[str] #part of speech (classe gramatical)
-    morph_class: Optional[str]
     glosa_ptbr: Optional[str] #tradução ou glosa em PTBR
     propriedades: Dict[str, Any] = field(default_factory=dict)
     sentence_id: str = None
@@ -23,13 +22,20 @@ class Word:
             form=row.get("kubeo_form"),
             lemma=row.get("lemma"),
             pos=row.get("pos"),
-            morph_class=row.get("morph_class"),
             glosa_ptbr=row.get("glosa_ptbr"),
             propriedades={
+                #Propriedades de nomes
                 "gênero": row.get("gender"),
                 "número": row.get("number"),
                 "contável": row.get("countable"),
-                "notas": row.get("notes"),
+
+                #Propriedades de verbos
+                "modo": row.get("mood"),
+                "tempo": row.get("tense"),
+                "aspecto": row.get("aspect"),
+                "pessoa verbal": row.get("person"), 
+                
+                "notas": row.get("notes"),      #espaço livre para anotações relevantes
             },
             sentence_id=row.get("sentence_id"),
             word_index=int(row.get("word_index")) if row.get("word_index") else None
@@ -44,7 +50,7 @@ class Sentence:
     def render_html(self):
         parts = []
         for w in self.words:
-            parts.append(f'<span class="token" data-word-id="{w.id}">{w.form}</span>')
+            parts.append(f'<span class="word" data-word-id="{w.id}">{w.form}</span>')
         return " ".join(parts)
 
 class Corpus:

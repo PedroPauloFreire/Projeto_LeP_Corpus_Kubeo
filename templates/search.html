@@ -1,12 +1,49 @@
 <!doctype html>
-<html><body>
-<form method="get">
-<input name="q" value="{{q}}">
-<button>Buscar</button>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Resultados da busca</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .token { padding: 0 2px; }
+        .token:hover { background-color: #e0e0e0; cursor: default; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        a { text-decoration: none; color: #333; display: block; }
+        a:hover { background-color: #f9f9f9; }
+        .sid { color: #007bff; font-weight: bold; font-size: 0.9em; margin-right: 8px; }
+        .no-results { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<h2>Resultados da Busca:</h2>
+
+<form method="get" style="margin-bottom: 20px;">
+    <input type="text" name="q" value="{{q}}" placeholder="Buscar..." 
+           style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+    <button type="submit" 
+            style="background-color: #007bff; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">
+        Nova busca
+    </button>
 </form>
+
 <ul>
 {% for r in results %}
-<li><a href="/sentence/{{r.sid}}">Frase {{r.sid}}</a></li>
+    <li>
+        <a href="/sentence/{{r.sid}}">
+            <span class="sid">[{{r.sid}}]</span>
+            
+            {{ r.snippet|safe }}
+        </a>
+    </li>
+{% else %}
+    <p class="no-results">Nenhum resultado encontrado para "{{q}}".</p>
 {% endfor %}
 </ul>
-</body></html>
+
+<hr>
+<a href="/" style="color: #007bff; text-decoration: none;">← Voltar para o Início</a>
+
+</body>
+</html>

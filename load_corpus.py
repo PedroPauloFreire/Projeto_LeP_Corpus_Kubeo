@@ -22,7 +22,7 @@ def load_from_tsv(path):
             #variável de lista para armazenar as palavras da frase corrente
             sentence_words = []
 
-            #percorre o dicionário de frases, frase a frase
+
             for row in reader:
 
                 #valida a ID de cada linha, e quando diferente da anteriro cria uma nova instância Sentence, para iniciar uma nova frase
