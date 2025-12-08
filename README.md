@@ -26,3 +26,31 @@ O **Kubeo Corpus Annotator** é uma aplicação web simples, construída em **Py
 Os dados linguísticos e a análise morfológica (Modo, Aspecto, etc.) são baseados em materiais acadêmicos fornecidos, principalmente a **Tese de Doutorado** de Thiago Costa Chacon (2012) e o **Resumo Tipológico** da língua Kubeo.
 
 ---
+## Instalação e Execução
+
+Para rodar este projeto localmente, siga os passos abaixo no seu terminal (PowerShell ou Bash):
+
+### 1. Pré-requisitos
+
+Certifique-se de ter o **Python 3.x** e o `git` instalados em seu sistema.
+
+### 2. Clonar o Repositório
+
+```bash
+git clone https://github.com/PedroPauloFreire/Projeto_LeP_Corpus_Kubeo.git
+
+### 3. Configurar o Ambiente e Instalar Dependências
+
+Crie e ative o ambiente virtual para isolar as bibliotecas do projeto e instale o Flask:
+
+```bash
+# Cria o ambiente virtual usando Python 3
+python3 -m venv venv 
+
+# Ativa o ambiente virtual (Windows PowerShell)
+.\venv\Scripts\Activate
+# ou (Linux/macOS/Git Bash)
+# source venv/bin/activate
+
+# Instala o Flask (a principal dependência do projeto)
+pip install Flask
