@@ -38,19 +38,18 @@ Certifique-se de ter o **Python 3.x** e o `git` instalados em seu sistema.
 
 ```bash
 git clone https://github.com/PedroPauloFreire/Projeto_LeP_Corpus_Kubeo.git
+```
 
 ### 3. Configurar o Ambiente e Instalar Dependências
 
 Crie e ative o ambiente virtual para isolar as bibliotecas do projeto e instale o Flask:
 
 ```bash
-# Cria o ambiente virtual usando Python 3
-python3 -m venv venv 
-
-# Ativa o ambiente virtual (Windows PowerShell)
+python3 -m venv venv
+```
+```bash
 .\venv\Scripts\Activate
-# ou (Linux/macOS/Git Bash)
-# source venv/bin/activate
-
-# Instala o Flask (a principal dependência do projeto)
+```
+```bash
 pip install Flask
+```
